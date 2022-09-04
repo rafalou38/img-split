@@ -111,7 +111,7 @@ void join(char *basePath, char *files[MAX_JOIN_FILES], int count)
             int nw = targetWidth;
             int nh = sources[i].height * nw / sources[i].width;
 
-            printf("Image %s should be resized, %dx%d > %dx%d", sources[i].filePath, sources[i].width, sources[i].height, nw, nh);
+            printf("Image %s should be resized, %dx%d > %dx%d\n", sources[i].filePath, sources[i].width, sources[i].height, nw, nh);
 
             sources[i].width = nw;
             sources[i].height = nh;
@@ -134,16 +134,16 @@ void join(char *basePath, char *files[MAX_JOIN_FILES], int count)
             if (sources[i].resize)
             {
                 unsigned char *resized = malloc(sources[i].width * sources[i].height * JOIN_COMP);
-                stbir_resize_uint8(data, w, h, 0, resized, src->height, src->width, 0, JOIN_COMP);
+                stbir_resize_uint8(data, w, h, 0, resized, src->width, src->height, 0, JOIN_COMP);
                 free(data);
                 data = resized;
 
-                printf("Resized %s", src->filePath);
+                printf("Resized %s\n", src->filePath);
             }
 
-            for (int x = 0; x < w; x++)
+            for (int x = 0; x < sources[i].width; x++)
             {
-                for (int y = 0; y < h; y++)
+                for (int y = 0; y < sources[i].height; y++)
                 {
                     int srcI = (src->width * y + x) * JOIN_COMP;
                     int bufI = (targetWidth * (currentHeight + y) + x) * JOIN_COMP;
