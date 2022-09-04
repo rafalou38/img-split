@@ -1,0 +1,16 @@
+{
+  "configurations": [
+    {
+      "name": "gcc",
+      "includePath": ["${workspaceFolder}/**"],
+      //   "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
+      //   "windowsSdkVersion": "10.0.19041.0",
+      "compilerPath": "D:/programmes/MinGW/bin/gcc.exe",
+      // "compilerPath": "C:/MinGW/bin/gcc.exe",
+      "cStandard": "c99",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "gcc-x64"
+    }
+  ],
+  "version": 4
+}
